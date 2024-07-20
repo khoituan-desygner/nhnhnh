@@ -7,18 +7,17 @@ window.onload = function () {
   const img = new Image();
 
   // Set the source of the image
-  img.src = "./nhnhnh.jpg";
+  img.src =
+    "https://raw.githubusercontent.com/khoituan-desygner/nhnhnh/master/nhnhnh.jpg";
 
   // Draw the image onto the canvas once it's loaded
   img.onload = function () {
     ctx.drawImage(img, 0, canvas.height - img.height, img.width, img.height);
-    img.setAttribute("crossorigin", "anonymous");
-    canvas.toDataURL();
   };
 
   // Handle error
-  img.onerror = function () {
-    console.error("Failed to load image.");
+  img.onerror = function (err) {
+    window.alert("Failed to load image.", err);
   };
 
   // Function to export the canvas as an image
@@ -39,4 +38,26 @@ window.onload = function () {
 
   // Add event listener to the button to export the canvas as an image
   document.getElementById("download").addEventListener("click", exportCanvas);
+
+  const inputBox = document.getElementById("input-box");
+
+  inputBox.addEventListener("keypress", (event) => {
+    if (event.key != "Enter") return;
+
+    console.log(inputBox.value);
+
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+
+    // Set the font properties
+    context.font = "30px Arial";
+    context.fillStyle = "black";
+
+    // Draw the text on the canvas
+    context.fillText(inputBox.value, 50, 100);
+
+    // Optionally, you can also stroke the text for an outline effect
+    context.strokeStyle = "blue";
+    context.strokeText(inputBox.value, 50, 100);
+  });
 };
