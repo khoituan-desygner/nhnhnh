@@ -5,6 +5,7 @@ window.onload = function () {
 
   // Create a new image element
   const img = new Image();
+  img.crossOrigin = "anonymous";
 
   // Set the source of the image
   img.src =
@@ -41,23 +42,33 @@ window.onload = function () {
 
   const inputBox = document.getElementById("input-box");
 
-  inputBox.addEventListener("keypress", (event) => {
-    if (event.key != "Enter") return;
+  // Load the Gluten font using FontFaceObserver
+  const font = new FontFaceObserver("Gluten");
 
-    console.log(inputBox.value);
+  font
+    .load()
+    .then(function () {
+      console.log("Font loaded");
 
-    var canvas = document.getElementById("myCanvas");
-    var context = canvas.getContext("2d");
+      // Add event listener for the input box
+      inputBox.addEventListener("keypress", (event) => {
+        if (event.key !== "Enter") return;
 
-    // Set the font properties
-    context.font = "30px Arial";
-    context.fillStyle = "black";
+        console.log(inputBox.value);
 
-    // Draw the text on the canvas
-    context.fillText(inputBox.value, 50, 100);
+        // Set font properties when font is loaded
+        ctx.font = "40px Gluten";
+        ctx.fillStyle = "hotpink";
+        ctx.strokeStyle = "purple";
 
-    // Optionally, you can also stroke the text for an outline effect
-    context.strokeStyle = "blue";
-    context.strokeText(inputBox.value, 50, 100);
-  });
+        console.log(ctx.font);
+
+        // Draw the text on the canvas
+        ctx.fillText(inputBox.value, 50, 100);
+        ctx.strokeText(inputBox.value, 50, 100);
+      });
+    })
+    .catch(function (e) {
+      console.error("Font loading failed:", e);
+    });
 };

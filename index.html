@@ -4,6 +4,16 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Canvas Image</title>
+        <!-- Preconnect to Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- Link to the Google Font - Gluten -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Include FontFaceObserver from CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.1.0/fontfaceobserver.standalone.js"></script>
     </head>
     <body>
         <canvas
@@ -12,10 +22,11 @@
             height="1000"
             style="border: 1px solid #000000"
         ></canvas>
+        <br />
+        <button type="button" id="download">Download</button>
+        <br />
+        <input type="text" id="input-box" placeholder="Enter your quote" />
+        <!-- Link to the main JavaScript file -->
         <script src="main.js"></script>
-        <br />
-        <button type"button" id="download">Download</button>
-        <br />
-        <input type="text" id="input-box" placeholder="Enter your quote"/>
     </body>
 </html>
